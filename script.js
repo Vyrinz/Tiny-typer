@@ -2,14 +2,14 @@ const wordBox = document.getElementById("word-box");
 const input = document.getElementById("input");
 const wpmDisplay = document.getElementById("wpm");
 
-const words = "life long mean too to with word part more still new as any another own off but work know can must a for so keep do will form year well word child life think give possible well old about those not".split(" ");
+const words = "cat dog sun big red fun run toy boy joy hat mat map log zip day way go yes no if on in up to do it we me you all can not but and".split(" ");
 
 let testWords = [];
 let charSpans = [];
 let charIndex = 0;
 let startTime = null;
 
-function generateParagraph(wordCount = 50) {
+function generateParagraph(wordCount = 40) {
   testWords = [];
   for (let i = 0; i < wordCount; i++) {
     testWords.push(words[Math.floor(Math.random() * words.length)]);
@@ -52,7 +52,7 @@ input.addEventListener("input", () => {
     const expected = charSpans[i].textContent;
 
     if (char == null) {
-      // Not typed yet
+      // not typed yet
     } else if (char === expected) {
       charSpans[i].classList.add("correct");
     } else {
