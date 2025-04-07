@@ -63,7 +63,7 @@ body {
   font-family: 'Inter', sans-serif;
   text-transform: lowercase;
   margin-right: 1rem; /* space between words */
-  letter-spacing: -0.05rem; /* reduces space between letters */
+  letter-spacing: -0.09rem; /* reduces space between letters */
 }
 
 .correct {
