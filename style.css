@@ -33,6 +33,7 @@ body {
   font-size: 1.6rem;
   font-weight: 600;
   color: white;
+  text-transform: lowercase;
 }
 
 .logo .accent {
@@ -47,18 +48,20 @@ body {
 }
 
 #word-box {
-  font-size: 1.3rem;
-  line-height: 2.5rem;
+  font-size: 0.9rem; /* smaller word size */
+  line-height: 1.6rem; /* tighter line spacing */
   word-wrap: break-word;
   user-select: none;
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.15rem; /* less space between words */
 }
 
 .char {
   display: inline-block;
+  font-family: 'Inter', sans-serif;
+  text-transform: lowercase;
 }
 
 .correct {
@@ -83,6 +86,8 @@ body {
   border-radius: 6px;
   color: var(--text);
   outline: none;
+  font-family: 'Inter', sans-serif;
+  text-transform: lowercase;
 }
 
 #wpm {
