@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tiny Typer</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="top-bar">
-    <div class="logo">tiny typer</div>
-  </div>
+  <header class="top-bar">
+    <div class="logo">tiny<span class="accent">typer</span></div>
+  </header>
+
   <main class="container">
     <div id="word-box"></div>
     <input id="input" type="text" autocomplete="off" autofocus />
     <div id="wpm">WPM: 0</div>
   </main>
+
   <script src="script.js"></script>
 </body>
 </html>
