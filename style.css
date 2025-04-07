@@ -48,22 +48,22 @@ body {
 }
 
 #word-box {
-  font-size: 0.9rem; /* Keep a reasonable size */
-  line-height: 1.8rem; /* line height to space lines normally */
+  font-size: 0.9rem; /* Keep text size normal */
+  line-height: 1.8rem; /* Line height for proper line spacing */
   word-wrap: break-word;
   user-select: none;
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem; /* space between words */
+  gap: 0.4rem; /* Space between words */
 }
 
 .char {
   display: inline-block;
   font-family: 'Inter', sans-serif;
   text-transform: lowercase;
-  margin-right: 0.4rem; /* space between words */
-  letter-spacing: -0.02rem; /* Reduced space between letters */
+  margin-right: 0.4rem; /* Space between words */
+  letter-spacing: -0.02rem; /* Reduced spacing between letters */
 }
 
 .correct {
@@ -98,3 +98,4 @@ body {
   color: var(--accent);
   text-align: right;
 }
+
