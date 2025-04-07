@@ -1,70 +1,101 @@
-const wordBox = document.getElementById("word-box");
-const input = document.getElementById("input");
-const wpmDisplay = document.getElementById("wpm");
-
-const words = "cat dog sun big red fun run toy boy joy hat mat map log zip day way go yes no if on in up to do it we me you all can not but and".split(" ");
-
-let testWords = [];
-let charSpans = [];
-let charIndex = 0;
-let startTime = null;
-
-function generateParagraph(wordCount = 40) {
-  testWords = [];
-  for (let i = 0; i < wordCount; i++) {
-    testWords.push(words[Math.floor(Math.random() * words.length)]);
-  }
-
-  const paragraph = testWords.join(" ") + " ";
-  wordBox.innerHTML = "";
-  charSpans = [];
-
-  for (let char of paragraph) {
-    const span = document.createElement("span");
-    span.textContent = char;
-    span.classList.add("char");
-    wordBox.appendChild(span);
-    charSpans.push(span);
-  }
-
-  charIndex = 0;
-  charSpans[0].classList.add("current");
+:root {
+  --bg: #1e1f22;
+  --text: #ccc;
+  --accent: #00ffaa;
+  --correct: #b4f8c8;
+  --incorrect: #ff6b6b;
+  --current-bg: #333;
 }
 
-function updateWPM() {
-  const elapsed = (Date.now() - startTime) / 60000;
-  const typed = input.value.length;
-  const wpm = Math.round((typed / 5) / elapsed);
-  wpmDisplay.textContent = `WPM: ${wpm}`;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-input.addEventListener("input", () => {
-  const typed = input.value;
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  if (!startTime) startTime = Date.now();
+.top-bar {
+  padding: 20px;
+  text-align: center;
+  background-color: #2a2b2e;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
 
-  charSpans.forEach(span => {
-    span.classList.remove("correct", "incorrect", "current");
-  });
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
+  text-transform: lowercase;
+}
 
-  for (let i = 0; i < charSpans.length; i++) {
-    const char = typed[i];
-    const expected = charSpans[i].textContent;
+.logo .accent {
+  color: var(--accent);
+}
 
-    if (char == null) {
-      // not typed yet
-    } else if (char === expected) {
-      charSpans[i].classList.add("correct");
-    } else {
-      charSpans[i].classList.add("incorrect");
-    }
+.container {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-    if (i === typed.length) {
-      charSpans[i].classList.add("current");
-    }
-  }
+#word-box {
+  font-size: 0.9rem; /* Keep text size normal */
+  line-height: 1.8rem; /* Line height for proper line spacing */
+  word-wrap: break-word;
+  user-select: none;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem; /* Space between words */
+}
 
-  updateWPM();
-});
+.char {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  text-transform: lowercase;
+  margin-right: 0.4rem; /* Space between words */
+  letter-spacing: -0.1rem; /* Further reduced spacing between letters */
+}
 
-generateParagraph();
+.correct {
+  color: var(--correct);
+}
+
+.incorrect {
+  color: var(--incorrect);
+}
+
+.current {
+  background-color: var(--current-bg);
+  border-radius: 4px;
+}
+
+#input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  background: #2a2c30;
+  border: none;
+  border-radius: 6px;
+  color: var(--text);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: -0.1rem; /* Reduced spacing between letters in the input */
+}
+
+#wpm {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: var(--accent);
+  text-align: right;
+}
