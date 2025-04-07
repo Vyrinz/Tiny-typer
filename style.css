@@ -16,7 +16,7 @@
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Courier New', monospace; /* Monospaced font */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -60,10 +60,10 @@ body {
 
 .char {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Courier New', monospace; /* Monospaced font */
   text-transform: lowercase;
   margin-right: 0.4rem; /* Space between words */
-  letter-spacing: -0.02rem; /* Reduced spacing between letters */
+  letter-spacing: -0.1rem; /* Reduced spacing between letters */
 }
 
 .correct {
@@ -88,8 +88,9 @@ body {
   border-radius: 6px;
   color: var(--text);
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Courier New', monospace; /* Monospaced font */
   text-transform: lowercase;
+  letter-spacing: -0.1rem; /* Reduced spacing between letters in the input */
 }
 
 #wpm {
