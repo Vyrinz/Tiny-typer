@@ -55,7 +55,7 @@ body {
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.15rem; /* less space between words */
+  gap: 0.4rem; /* less space between words */
 }
 
 .char {
