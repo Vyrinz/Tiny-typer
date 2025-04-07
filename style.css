@@ -48,7 +48,7 @@ body {
 }
 
 #word-box {
-  font-size: 1rem; /* Set font size to 1rem (normal size) */
+  font-size: 0.9rem; /* Keep a reasonable size */
   line-height: 1.8rem; /* line height to space lines normally */
   word-wrap: break-word;
   user-select: none;
@@ -63,7 +63,7 @@ body {
   font-family: 'Inter', sans-serif;
   text-transform: lowercase;
   margin-right: 0.4rem; /* space between words */
-  letter-spacing: 0; /* reset any abnormal letter spacing */
+  letter-spacing: -0.02rem; /* Reduced space between letters */
 }
 
 .correct {
@@ -98,4 +98,3 @@ body {
   color: var(--accent);
   text-align: right;
 }
-
