@@ -2,76 +2,69 @@ const wordBox = document.getElementById("word-box");
 const input = document.getElementById("input");
 const wpmDisplay = document.getElementById("wpm");
 
-const words = "apple banana orange computer keyboard monitor mouse code screen developer language typing javascript python random challenge focus speed performance logic pixel display memory dark light digital create solve build write structure learn practice school gaming letter input result terminal style mousepad".split(" ");
+const words = "apple banana orange computer keyboard monitor mouse code screen developer language typing javascript python random challenge focus speed logic create write structure learn gaming input terminal memory result".split(" ");
 
 let testWords = [];
-let currentIndex = 0;
+let charSpans = [];
+let charIndex = 0;
 let startTime = null;
-let typedWords = 0;
 
-function generateWords(count = 35) {
+function generateParagraph(wordCount = 50) {
   testWords = [];
-  for (let i = 0; i < count; i++) {
-    const word = words[Math.floor(Math.random() * words.length)];
-    testWords.push(word);
+  for (let i = 0; i < wordCount; i++) {
+    testWords.push(words[Math.floor(Math.random() * words.length)]);
   }
-  displayWords();
-}
 
-function displayWords() {
+  const paragraph = testWords.join(" ") + " ";
   wordBox.innerHTML = "";
-  testWords.forEach((word, idx) => {
+
+  charSpans = [];
+  for (let char of paragraph) {
     const span = document.createElement("span");
-    span.textContent = word;
-    span.classList.add("word");
-    if (idx === currentIndex) {
-      span.classList.add("current");
-    }
+    span.textContent = char;
     wordBox.appendChild(span);
-  });
+    charSpans.push(span);
+  }
+
+  charIndex = 0;
+  charSpans[0].classList.add("current");
 }
 
 function updateWPM() {
   const elapsed = (Date.now() - startTime) / 60000;
-  const wpm = Math.round(typedWords / elapsed);
+  const typed = input.value.length;
+  const wpm = Math.round((typed / 5) / elapsed);
   wpmDisplay.textContent = `WPM: ${wpm}`;
 }
 
 input.addEventListener("input", () => {
-  const currentWordSpan = wordBox.children[currentIndex];
-  const currentWord = testWords[currentIndex];
   const typed = input.value;
 
-  currentWordSpan.classList.remove("correct", "incorrect");
+  if (!startTime) startTime = Date.now();
 
-  if (!startTime) {
-    startTime = Date.now();
+  // Reset all
+  charSpans.forEach(span => {
+    span.classList.remove("correct", "incorrect", "current");
+  });
+
+  for (let i = 0; i < charSpans.length; i++) {
+    const char = typed[i];
+    const expected = charSpans[i].textContent;
+
+    if (char == null) {
+      // Not typed yet
+    } else if (char === expected) {
+      charSpans[i].classList.add("correct");
+    } else {
+      charSpans[i].classList.add("incorrect");
+    }
+
+    if (i === typed.length) {
+      charSpans[i].classList.add("current");
+    }
   }
 
-  if (typed.endsWith(" ")) {
-    const cleanTyped = typed.trim();
-    if (cleanTyped === currentWord) {
-      currentWordSpan.classList.add("correct");
-    } else {
-      currentWordSpan.classList.add("incorrect");
-    }
-    typedWords++;
-    currentIndex++;
-    input.value = "";
-    if (currentIndex < testWords.length) {
-      displayWords();
-    } else {
-      input.disabled = true;
-      updateWPM();
-    }
-    updateWPM();
-  } else {
-    if (currentWord.startsWith(typed)) {
-      currentWordSpan.classList.remove("incorrect");
-    } else {
-      currentWordSpan.classList.add("incorrect");
-    }
-  }
+  updateWPM();
 });
 
-generateWords();
+generateParagraph();
