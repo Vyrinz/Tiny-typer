@@ -55,13 +55,14 @@ body {
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem; /* less space between words */
+  gap: 0.4rem; /* increases space between words */
 }
 
 .char {
   display: inline-block;
   font-family: 'Inter', sans-serif;
   text-transform: lowercase;
+  margin-right: 1rem; /* Adds space between words */
 }
 
 .correct {
