@@ -48,8 +48,8 @@ body {
 }
 
 #word-box {
-  font-size: 0.9rem; /* smaller word size */
-  line-height: 1.6rem; /* tighter line spacing */
+  font-size: 0.8rem; /* smaller word size */
+  line-height: 1.8rem; /* tighter line spacing */
   word-wrap: break-word;
   user-select: none;
   margin-bottom: 30px;
