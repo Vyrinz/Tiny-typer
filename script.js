@@ -2,7 +2,7 @@ const wordBox = document.getElementById("word-box");
 const input = document.getElementById("input");
 const wpmDisplay = document.getElementById("wpm");
 
-const words = "apple banana orange computer keyboard monitor mouse code screen developer language typing javascript python random challenge focus speed logic create write structure learn gaming input terminal memory result".split(" ");
+const words = "life long mean too to with word part more still new as any another own off but work know can must a for so keep do will form year well word child life think give possible well old about those not".split(" ");
 
 let testWords = [];
 let charSpans = [];
@@ -17,11 +17,12 @@ function generateParagraph(wordCount = 50) {
 
   const paragraph = testWords.join(" ") + " ";
   wordBox.innerHTML = "";
-
   charSpans = [];
+
   for (let char of paragraph) {
     const span = document.createElement("span");
     span.textContent = char;
+    span.classList.add("char");
     wordBox.appendChild(span);
     charSpans.push(span);
   }
@@ -42,7 +43,6 @@ input.addEventListener("input", () => {
 
   if (!startTime) startTime = Date.now();
 
-  // Reset all
   charSpans.forEach(span => {
     span.classList.remove("correct", "incorrect", "current");
   });
